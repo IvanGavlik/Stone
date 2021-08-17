@@ -1,0 +1,16 @@
+<div style="border: 1px solid blue">
+
+  <h1>  {{ card.title }}</h1>
+
+  <h3 *ngIf="displaySubtitle" > Subtite {{ card.subtitle }} </h3>
+
+  <div style="margin: 5px; border: 1px solid deepskyblue">
+    {{ card.description }}
+  </div>
+
+  <div>
+    <button (click)="cancel()"> Cancel </button>
+   <button (click)="save()">  Save </button>
+  </div>
+
+</div>
