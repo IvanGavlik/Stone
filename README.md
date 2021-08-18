@@ -19,7 +19,7 @@ It represents  data table, form, card...
 Each component has DTO interface that is used as input.
 
 
-Crud abstraction is service that provide basic functions of persistent storage (create, read, update and delete) and you also can do search based on SearchCriteria.
+Crud abstraction is service that provide basic functions of persistent storage (create, read, update and delete) and search.
 As output has Entity interface.
 
 Map abstraction is service that is used to map Entity interface to DTO interface and vice versa.
