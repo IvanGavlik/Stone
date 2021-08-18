@@ -83,5 +83,7 @@ Client
 
 * create at least one UI dummy component (table) and Bridge component that will be for client to use.  
     Make examples and see is this good approach
-    
+
+* use Bridge component service to handle events from Bridge component Do we need abstraction for events ?
+
 * what about security, permissions, translation and other ...
