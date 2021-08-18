@@ -1,27 +1,87 @@
 # MyAngularFramework
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.1.
+TODO rename
 
-## Development server
+How to create angular app where UI will be decoupled form crud operations and business logic.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Solution
 
-## Code scaffolding
+### Idea
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Have two or more abstractions. At least one for UI and other for curd operation and then use bridge pattern to bring them 
+together. 
 
-## Build
+Bridge pattern more info [here](https://refactoring.guru/design-patterns/bridge)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+### Implementation
 
-## Running unit tests
+UI abstraction provides dummy UI components.
+Dummy UI component = there is no business logic or state only input and @Output events. 
+It represents  data table, form, card...
+Each component has DTO interface that is used as input.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
+Crud abstraction is service that provide basic functions of persistent storage (create, read, update and delete) and you also can do search based on SearchCriteria.
+As output has Entity interface.
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+Map abstraction is service that is used to map Entity interface to DTO interface and vice versa.
 
-## Further help
+Bridge will be implemented as angular component that use Crud and Map abstraction for work with data, 
+and UI abstraction for displaying data.
+Also this component will have its service through which client can action on component events.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+Consider that Entity interface or Crud Service has decorator for configuration.
+Consider that UI DTO interface as decorator for configuration (on fields (generate element)  and classes).
+
+
+### Example
+
+UI abstraction
+
+* src/app/firstSimpleImpl/ui/card/card.component.ts 
+* src/app/firstSimpleImpl/ui/card/card.component.html
+* it has DTO interface as input 
+* does not do any operations it just @Outputs events
+
+Curd abstraction
+
+* src/app/firstSimpleImpl/fetch/fetch.service.ts
+* returns entity interface
+
+Map abstraction
+
+* src/app/firstSimpleImpl/map/map-operation.service.ts
+* maps entity to DTO interface
+
+Bridge component
+
+* src/app/firstSimpleImpl/app-card/app-card.component.ts
+* glues together UI, Crud and Map 
+* has service that notify on events form UI dummy component also can be used to notify on other things
+
+Client 
+* use only Bridge component
+* use Bridge component service to handle events
+* for custom behavior he can override UI, Crud or Map abstraction 
+
+
+## TODO
+* finish Curd abstraction so that client to used it need only on his object extend/implement Entity abstract class/interface
+
+    Example:
+      `
+        class User extends Entity {}
+      `
+
+* finish Map abstraction so that client to used it need only on his service extend/implement Map
+  Also is this good approach ? can we automate this ? can we use some lib ?
+   
+    Example:
+      `
+        class UserMapper extends Map<User, TableUI> {}
+      `
+
+* create at least one UI dummy component (table) and Bridge component that will be for client to use.  
+    Make examples and see is this good approach
+    
+* what about security, permissions, translation and other ...
