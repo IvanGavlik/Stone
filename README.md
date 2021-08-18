@@ -61,7 +61,7 @@ Client
 * src/app/app.component.ts
 * src/app/app.component.html
 * use only Bridge component
-* use Bridge component service to handle events
+* use Bridge component service to handle events from Bridge component
 * for custom behavior he can override UI, Crud or Map abstraction 
 
 
