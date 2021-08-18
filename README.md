@@ -58,6 +58,8 @@ Bridge component
 * has service that notify on events form UI dummy component also can be used to notify on other things
 
 Client 
+* src/app/app.component.ts
+* src/app/app.component.html
 * use only Bridge component
 * use Bridge component service to handle events
 * for custom behavior he can override UI, Crud or Map abstraction 
