@@ -1,6 +1,6 @@
 # MyAngularFramework
 
-TODO rename
+TODO rename maybe Stone
 
 How to create angular app where UI will be decoupled form crud operations and business logic.
 
