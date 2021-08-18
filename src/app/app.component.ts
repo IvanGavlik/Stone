@@ -12,7 +12,7 @@ export class AppComponent implements OnInit {
   title = 'myAngularFramework';
 
   constructor(private cardService: AppCardService,
-              private myCustomFetchService: MyCustomFetchService
+              protected myCustomFetchService: MyCustomFetchService
   ) {}
 
   ngOnInit(): void {

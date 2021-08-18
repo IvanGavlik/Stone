@@ -25,7 +25,11 @@ export class TableComponent implements OnInit {
     const entiyData = this.fetch.getAll();
     const tableData = this.mapOperation.map(entiyData);
     this.ui.displayData(tableData);
-    this.tableUIService.nextTableEvent({name: 'loading stop'} as TableEvent);
+    this.tableUIService.nextTableEvent({name: 'loading end'} as TableEvent);
+  }
+
+  onRowSelected() {
+    this.tableUIService.nextTableEvent({name: 'row selected', payload: 'row item'} as TableEvent);
   }
 
 }

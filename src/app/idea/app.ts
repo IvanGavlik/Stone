@@ -1,4 +1,5 @@
 /**
+ * Idea from brige degidn pattern -> How handle two abstractions
  * User in html will define
  * <TableComponent> </TableComponent>
  *

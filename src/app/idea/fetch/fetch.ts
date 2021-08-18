@@ -1,3 +1,8 @@
+/*@Entity{
+  contentType:
+  singleUle
+  premmson
+}*/
 export abstract class Entity {
   id: string;
 }
