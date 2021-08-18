@@ -2,6 +2,9 @@ import {Component, Injector, OnInit} from '@angular/core';
 import {RepositoryService} from '../persistence/repository.service';
 import {UserMapperService} from './user-mapper.service';
 
+/**
+ * TODO how to pass config for repo service
+ */
 @Component({
   selector: 'app-app-v2',
   templateUrl: './app-v2.component.html',
